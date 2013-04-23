@@ -7,5 +7,6 @@ class Book {
 
     static constraints = {
 		author nullable:true
+		title nullable:false, blank:false
     }
 }
