@@ -14,31 +14,31 @@ import org.custommonkey.xmlunit.*
 @TestFor(Book)
 @Mock([Book])
 class BookTests extends spock.lang.Specification {
-	
+
 	def xmlString="""<book id='1'>
 					<author>manish rajkarnikar</author>
 					<title>Groovy in Action</title>
 					</book>"""
 
-					def xmlDiff
-					
+	def xmlDiff
+
 	def "Index action should redirect to list page"() {
 		when: "count, rows and page number"
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)
 		XMLUnit.setIgnoreWhitespace(true)
-		
-		 xml.book(id:'1') {
+
+		xml.book(id:'1') {
 			author('manish rajkarnikar')
 			title('Groovy in Action')
-		  }
-		 xmlDiff = new Diff(writer.toString(), xmlString)
-		 
-		
-		
-		
+		}
+		xmlDiff = new Diff(writer.toString(), xmlString)
+
+
+
+
 
 		then: "should return correct total pages, the current page, and the offset"
-		  xmlDiff.identical()
+		xmlDiff.identical()
 	}
 }
