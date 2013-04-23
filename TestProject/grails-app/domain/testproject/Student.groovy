@@ -10,5 +10,7 @@ class Student {
 	static hasMany=[books:Book]
 	
     static constraints = {
+		
+		lastName nullable:true
     }
 }
